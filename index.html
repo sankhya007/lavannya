@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bristi & Saswati — Handmade Jewellery</title>
+
+  <!-- Google Fonts: Display (script) + Body (serif) + Utility (sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════
+       BACKGROUND BOTANICAL DECORATION
+       ════════════════════════════════════════ -->
+  <div class="bg-botanicals" aria-hidden="true">
+    <span class="botanical botanical--tl">✿</span>
+    <span class="botanical botanical--tr">❀</span>
+    <span class="botanical botanical--bl">✾</span>
+    <span class="botanical botanical--br">✿</span>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       MAIN WRAPPER
+       ════════════════════════════════════════ -->
+  <main class="page-wrapper">
+
+    <!-- ── HEADER / BRAND SECTION ── -->
+    <header class="brand-header">
+
+      <!-- Profile / Logo image -->
+      <!-- Replace "assets/logo.png" with your actual image file -->
+      <div class="profile-ring">
+        <div class="profile-img-wrap">
+          <img
+            src="logo.jpeg"
+            alt="Bristi & Saswati Handmade Jewellery logo"
+            class="profile-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <!-- Fallback monogram shown when no image is found -->
+          <div class="profile-monogram" style="display:none;">B&S</div>
+        </div>
+      </div>
+
+      <!-- Brand name -->
+      <h1 class="brand-name">Bristi &amp; Saswati</h1>
+
+      <!-- Divider leaf motif -->
+      <div class="header-divider" aria-hidden="true">
+        <span class="divider-line"></span>
+        <span class="divider-motif">✦</span>
+        <span class="divider-line"></span>
+      </div>
+
+      <!-- Tagline -->
+      <p class="brand-tagline">Handcrafted jewellery, made with love<br />Shipping across India</p>
+
+      <!-- Owner credits
+      <p class="brand-owners">By Bristi Das &amp; Saswati Dey</p> -->
+
+    </header>
+
+    <!-- ── LINK TILES SECTION ── -->
+    <!--
+    ╔══════════════════════════════════════════════════════════════════╗
+    ║  HOW TO ADD A NEW LINK TILE                                     ║
+    ║  ─────────────────────────────────────────────────────────────  ║
+    ║  1. Copy the entire <a class="link-tile"> … </a> block below.  ║
+    ║  2. Paste it right after the last </a> tag inside .links-grid. ║
+    ║  3. Update: href, the <i> icon class, the <span> title text,   ║
+    ║     and the <small> subtitle text.                              ║
+    ║  4. (Optional) Add a modifier class for colour:                 ║
+    ║       link-tile--rose  |  link-tile--sage  |  link-tile--sand  ║
+    ╚══════════════════════════════════════════════════════════════════╝
+    -->
+    <section class="links-section" aria-label="Our Links">
+      <div class="links-grid">
+
+        <!-- ── TILE 1 : Instagram ── -->
+        <a
+          href="https://www.instagram.com/L.A.V.A.N.YA__"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-tile link-tile--rose"
+          aria-label="Visit our Instagram page"
+        >
+          <span class="tile-icon-wrap">
+            <i class="fa-brands fa-instagram tile-icon"></i>
+          </span>
+          <span class="tile-content">
+            <span class="tile-title">Instagram</span>
+            <small class="tile-subtitle">Shop our latest drops &amp; collections</small>
+          </span>
+          <span class="tile-arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+
+        <!-- ── TILE 2 : WhatsApp ── -->
+        <a
+          href="https://wa.me/917980552253"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-tile link-tile--sage"
+          aria-label="Message us on WhatsApp"
+        >
+          <span class="tile-icon-wrap">
+            <i class="fa-brands fa-whatsapp tile-icon"></i>
+          </span>
+          <span class="tile-content">
+            <span class="tile-title">WhatsApp</span>
+            <small class="tile-subtitle">Custom orders &amp; enquiries</small>
+          </span>
+          <span class="tile-arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+
+        <!--
+        ════════════════════════════════════════════════════════════════
+        ── FUTURE TILE TEMPLATE — copy from here ──
+        ════════════════════════════════════════════════════════════════
+
+        <a
+          href="YOUR_URL_HERE"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-tile link-tile--sand"
+          aria-label="Descriptive label for screen readers"
+        >
+          <span class="tile-icon-wrap">
+            <i class="fa-brands fa-YOUR_ICON tile-icon"></i>
+          </span>
+          <span class="tile-content">
+            <span class="tile-title">Platform Name</span>
+            <small class="tile-subtitle">Short description of what they'll find</small>
+          </span>
+          <span class="tile-arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+
+        ════════════════════════════════════════════════════════════════
+        ── end of template ──
+        ════════════════════════════════════════════════════════════════
+        -->
+
+      </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="site-footer">
+
+      <!-- Social icon row -->
+      <div class="footer-socials" aria-label="Social links">
+        <a href="https://www.instagram.com/L.A.V.A.N.YA__" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/917980552253" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
+
+      <!-- Copyright -->
+      <p class="footer-copy">
+        &copy; <span id="year"></span> Bristi Das &amp; Saswati Dey. All rights reserved.<br />
+        <span class="footer-note">Handmade with love ✦ Shipped across India</span>
+      </p>
+
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

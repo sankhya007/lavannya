@@ -1,0 +1,528 @@
+/* ════════════════════════════════════════════════════════════════════
+   BRISTI & SASWATI — Handmade Jewellery Link-in-Bio
+   Palette pulled directly from the "Thank You" card:
+     --cream       : warm parchment background
+     --rose-dark   : deep dusty rose (card florals)
+     --rose-mid    : muted rose-blush (tile accent)
+     --terracotta  : warm terracotta (script text colour on card)
+     --sage        : sage-green leaf tones
+     --brown-deep  : deep bark-brown (script headings on card)
+     --sand        : warm sand neutral
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── CSS CUSTOM PROPERTIES (DESIGN TOKENS) ── */
+:root {
+  /* Palette */
+  --cream:          #F5EFE4;
+  --cream-light:    #FBF7F0;
+  --cream-dark:     #EDE2CF;
+  --rose-dark:      #B97A72;
+  --rose-mid:       #C08070;
+  --rose-light:     #E5C5BC;
+  --terracotta:     #8B5E4A;
+  --sage:           #8A9E7E;
+  --sage-light:     #C5D4BC;
+  --sage-dark:      #5E7A52;
+  --sand:           #A8865E;
+  --sand-light:     #E4D5C0;
+  --brown-deep:     #4A2E1A;
+  --brown-mid:      #6B4226;
+  --white-warm:     #FDFAF5;
+
+  /* Typography */
+  --font-display:   'Great Vibes', cursive;          /* flowing script — brand name */
+  --font-serif:     'Cormorant Garamond', serif;     /* elegant serif — taglines     */
+  --font-ui:        'Jost', sans-serif;              /* clean sans — tile labels     */
+
+  /* Spacing */
+  --space-xs:  0.375rem;
+  --space-sm:  0.75rem;
+  --space-md:  1.25rem;
+  --space-lg:  2rem;
+  --space-xl:  3rem;
+
+  /* Border radius */
+  --radius-pill:  999px;
+  --radius-card:  18px;
+  --radius-sm:    8px;
+
+  /* Shadows */
+  --shadow-tile:   0 2px 20px rgba(74, 46, 26, 0.08);
+  --shadow-hover:  0 8px 36px rgba(74, 46, 26, 0.14);
+  --shadow-ring:   0 0 0 4px var(--cream-dark), 0 0 0 8px var(--rose-mid);
+
+  /* Transitions */
+  --ease-soft: cubic-bezier(0.34, 1.2, 0.64, 1);
+  --t-fast: 180ms;
+  --t-mid:  320ms;
+}
+
+/* ── RESET & BASE ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--cream);
+  /* Subtle textured parchment feel using a radial gradient layer */
+  background-image:
+    radial-gradient(ellipse 120% 80% at 15% 10%,  rgba(185, 122, 114, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 70% at 85% 90%,  rgba(138, 158, 126, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 80%  60% at 50% 50%,  rgba(201, 173, 145, 0.04) 0%, transparent 70%);
+  font-family: var(--font-ui);
+  color: var(--brown-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── BACKGROUND BOTANICAL DECORATIONS ── */
+.bg-botanicals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.botanical {
+  position: absolute;
+  font-size: 7rem;
+  opacity: 0.045;
+  color: var(--rose-dark);
+  line-height: 1;
+  user-select: none;
+}
+
+.botanical--tl { top: -1.5rem;  left: -1.5rem;  transform: rotate(-20deg); font-size: 9rem; }
+.botanical--tr { top: -1rem;    right: -1rem;   transform: rotate(15deg);  font-size: 8rem; color: var(--sage); }
+.botanical--bl { bottom: -1rem; left: -0.5rem;  transform: rotate(10deg);  font-size: 7rem; color: var(--sand); }
+.botanical--br { bottom: -2rem; right: -1.5rem; transform: rotate(-15deg); font-size: 10rem; }
+
+/* ── PAGE WRAPPER ── */
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   HEADER / BRAND SECTION
+   ════════════════════════════════════════════════════════════════════ */
+.brand-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: center;
+  width: 100%;
+}
+
+/* Profile ring */
+.profile-ring {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--rose-mid), var(--sand), var(--sage));
+  box-shadow: var(--shadow-ring);
+  margin-bottom: var(--space-xs);
+}
+
+.profile-img-wrap {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-monogram {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--terracotta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Brand name — matches the flowing script from the Thank You card */
+.brand-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 8vw, 3.4rem);
+  font-weight: 400;
+  color: var(--brown-mid);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  /* Subtle text shadow for depth, matching card's warm script */
+  text-shadow: 0 1px 6px rgba(74, 46, 26, 0.1);
+  margin-top: var(--space-xs);
+}
+
+/* Divider */
+.header-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 60%;
+  margin: var(--space-xs) 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--rose-mid), transparent);
+}
+
+.divider-motif {
+  font-size: 0.65rem;
+  color: var(--rose-mid);
+  flex-shrink: 0;
+}
+
+/* Tagline */
+.brand-tagline {
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--terracotta);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+/* Owner credit */
+.brand-owners {
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brown-mid);
+  margin-top: var(--space-xs);
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   LINK TILES SECTION
+   ════════════════════════════════════════════════════════════════════ */
+.links-section {
+  width: 100%;
+}
+
+.links-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+/* ── BASE TILE ── */
+.link-tile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-card);
+  border: 1.5px solid transparent;
+  background: var(--white-warm);
+  box-shadow: var(--shadow-tile);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  /* Smooth all the things */
+  transition:
+    transform  var(--t-mid) var(--ease-soft),
+    box-shadow var(--t-mid) ease,
+    border-color var(--t-fast) ease,
+    background-color var(--t-fast) ease;
+
+  /* Subtle inner shimmer on the left edge */
+  outline: none;
+}
+
+/* Left-edge accent bar via ::before */
+.link-tile::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12%;
+  bottom: 12%;
+  width: 3.5px;
+  border-radius: var(--radius-pill);
+  background: currentColor;
+  opacity: 0.22;
+  transition: opacity var(--t-fast) ease, height var(--t-mid) ease;
+}
+
+/* Hover state */
+.link-tile:hover,
+.link-tile:focus-visible {
+  transform: translateY(-3px) scale(1.012);
+  box-shadow: var(--shadow-hover);
+}
+
+.link-tile:hover::before,
+.link-tile:focus-visible::before {
+  opacity: 0.55;
+}
+
+/* Active / tap state */
+.link-tile:active {
+  transform: translateY(0) scale(0.99);
+  box-shadow: var(--shadow-tile);
+}
+
+/* Focus ring (accessibility) */
+.link-tile:focus-visible {
+  outline: 2px solid var(--rose-mid);
+  outline-offset: 3px;
+}
+
+/* ── TILE COLOUR VARIANTS ──
+   Modifier classes for the colour accent.
+   Add link-tile--rose / --sage / --sand on any tile.
+   The icon, border, and left-bar all key off `color`.
+*/
+.link-tile--rose {
+  color: var(--rose-dark);
+  border-color: var(--rose-light);
+  background: linear-gradient(105deg, var(--white-warm) 70%, rgba(212, 164, 154, 0.10) 100%);
+}
+.link-tile--rose:hover {
+  border-color: var(--rose-mid);
+  background: linear-gradient(105deg, var(--white-warm) 60%, rgba(212, 164, 154, 0.16) 100%);
+}
+
+.link-tile--sage {
+  color: var(--sage-dark);
+  border-color: var(--sage-light);
+  background: linear-gradient(105deg, var(--white-warm) 70%, rgba(138, 158, 126, 0.10) 100%);
+}
+.link-tile--sage:hover {
+  border-color: var(--sage);
+  background: linear-gradient(105deg, var(--white-warm) 60%, rgba(138, 158, 126, 0.16) 100%);
+}
+
+.link-tile--sand {
+  color: var(--terracotta);
+  border-color: var(--sand-light);
+  background: linear-gradient(105deg, var(--white-warm) 70%, rgba(201, 173, 145, 0.10) 100%);
+}
+.link-tile--sand:hover {
+  border-color: var(--sand);
+  background: linear-gradient(105deg, var(--white-warm) 60%, rgba(201, 173, 145, 0.16) 100%);
+}
+
+/* ── TILE ICON WRAP ── */
+.tile-icon-wrap {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  background: currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity var(--t-fast) ease, transform var(--t-mid) var(--ease-soft);
+}
+
+.link-tile:hover .tile-icon-wrap {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.tile-icon {
+  font-size: 1.35rem;
+  color: var(--white-warm);
+}
+
+/* ── TILE TEXT CONTENT ── */
+.tile-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tile-title {
+  font-family: var(--font-ui);
+  font-size: 0.98rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--brown-deep);
+  line-height: 1.2;
+}
+
+.tile-subtitle {
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--brown-mid);
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+/* ── TILE ARROW ── */
+.tile-arrow {
+  flex-shrink: 0;
+  color: currentColor;
+  opacity: 0.3;
+  font-size: 0.8rem;
+  transition: opacity var(--t-fast) ease, transform var(--t-mid) var(--ease-soft);
+}
+
+.link-tile:hover .tile-arrow {
+  opacity: 0.7;
+  transform: translateX(4px);
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════════════════════════════════════ */
+.site-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--cream-dark);
+}
+
+/* Social icon row */
+.footer-socials {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.footer-social-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--sand);
+  background: var(--white-warm);
+  transition:
+    color       var(--t-fast) ease,
+    border-color var(--t-fast) ease,
+    transform   var(--t-mid) var(--ease-soft);
+}
+
+.footer-social-icon:hover {
+  color: var(--terracotta);
+  border-color: var(--rose-mid);
+  transform: translateY(-2px) scale(1.1);
+}
+
+/* Copyright text */
+.footer-copy {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--sand);
+  text-align: center;
+  line-height: 1.9;
+}
+
+.footer-note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.72rem;
+  color: var(--rose-mid);
+  letter-spacing: 0.04em;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════════════════ */
+@media (max-width: 400px) {
+  .page-wrapper {
+    padding: var(--space-lg) var(--space-sm) var(--space-md);
+    gap: var(--space-lg);
+  }
+
+  .brand-name {
+    font-size: 2.5rem;
+  }
+
+  .profile-ring {
+    width: 170px;
+    height: 170px;
+  }
+
+  .link-tile {
+    padding: 0.85rem 1rem;
+  }
+
+  .tile-icon-wrap {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tile-icon {
+    font-size: 1.15rem;
+  }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  .link-tile,
+  .link-tile::before,
+  .tile-icon-wrap,
+  .tile-arrow,
+  .footer-social-icon {
+    transition: none;
+  }
+  .link-tile:hover {
+    transform: none;
+  }
+}
+
+/* ── SELECTION COLOUR ── */
+::selection {
+  background: var(--rose-light);
+  color: var(--brown-deep);
+}
